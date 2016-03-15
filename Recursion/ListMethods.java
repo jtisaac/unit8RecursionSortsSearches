@@ -16,7 +16,7 @@ public class ListMethods
       {
           tempList.add(t);
           t --;
-          tempList.addAll(ListMethods.makeList(t));
+          tempList.addAll(ListMethods.makeList(t)); //head recusion
           
           
           
@@ -25,7 +25,7 @@ public class ListMethods
    }
    //public static ArrayList<Integer> reverseList(ArrayList<Integer> list)
    //{
-     //  return
+       
     //}
     
 }
