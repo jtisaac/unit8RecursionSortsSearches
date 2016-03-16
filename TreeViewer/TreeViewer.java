@@ -18,7 +18,7 @@ public class TreeViewer implements ActionListener
 
     private JButton increase, decrease;
     private JLabel titleLabel, orderLabel;
-    private KochPanel drawing;
+    private TreeComponent drawing;
     private JPanel panel, tools;
     private JFrame frame;
 
@@ -27,7 +27,7 @@ public class TreeViewer implements ActionListener
     //-----------------------------------------------------------------
     public static void main(String[] args)
     {
-        KochSnowflakeViewer viewer = new KochSnowflakeViewer();
+        TreeViewer viewer = new TreeViewer();
     }
 
     public TreeViewer()
@@ -59,7 +59,7 @@ public class TreeViewer implements ActionListener
         tools.add (Box.createHorizontalStrut (20));
         tools.add (orderLabel);
 
-        drawing = new KochPanel (1);
+        drawing = new TreeComponent (1);
 
         panel = new JPanel();
         panel.add (tools);

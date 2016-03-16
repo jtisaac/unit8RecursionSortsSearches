@@ -3,7 +3,7 @@
 //
 //  Represents a drawing surface on which to paint a Koch Snowflake.
 //********************************************************************
-
+import java.awt.geom.Line2D;
 import java.awt.*;
 import javax.swing.JPanel;
 
@@ -18,12 +18,13 @@ public class TreeComponent extends JPanel
    private final int LEFTX = 60, LEFTY = 300;
    private final int RIGHTX = 340, RIGHTY = 300;
 
+   
    private int current; //current order
 
    //-----------------------------------------------------------------
    //  Sets the initial fractal order to the value specified.
    //-----------------------------------------------------------------
-   public KochPanel (int currentOrder)
+   public TreeComponent (int currentOrder)
    {
       current = currentOrder;
       setBackground (Color.black);
@@ -36,31 +37,19 @@ public class TreeComponent extends JPanel
    //  intermediate points are computed, and each line segment is
    //  drawn as a fractal.
    //-----------------------------------------------------------------
-   public void drawFractal (int order, int x1, int y1, int x5, int y5,
-                            Graphics page)
+   public void drawFractal (Graphics2D g2, Double x, Double y, Double length, Double angle, int order)
    {
-      int deltaX, deltaY, x2, y2, x3, y3, x4, y4;
-
+     //g2.draw(Line2D.Double() line = new Line2D.Double());
+       
       if (order == 1)
-         page.drawLine (x1, y1, x5, y5);
+         g2.draw(new Line2D.Double(x,y,x,y-length));
       else
       {
-         deltaX = x5 - x1;  // distance between end points
-         deltaY = y5 - y1;
+         
 
-         x2 = x1 + deltaX / 3;  // one third
-         y2 = y1 + deltaY / 3;
+         drawFractal (x, y, length, angle, order );
+         drawFractal (x, y, length, angle, order );
 
-         x3 = (int) ((x1+x5)/2 + SQ * (y1-y5));  // tip of projection
-         y3 = (int) ((y1+y5)/2 + SQ * (x5-x1));
-
-         x4 = x1 + deltaX * 2/3;  // two thirds
-         y4 = y1 + deltaY * 2/3;
-
-         drawFractal (order-1, x1, y1, x2, y2, page);
-         drawFractal (order-1, x2, y2, x3, y3, page);
-         drawFractal (order-1, x3, y3, x4, y4, page);
-         drawFractal (order-1, x4, y4, x5, y5, page);
       }
    }
 
