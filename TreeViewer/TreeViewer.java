@@ -37,7 +37,7 @@ public class TreeViewer implements ActionListener
         tools.setBackground (Color.yellow);
         tools.setOpaque (true);
 
-        titleLabel = new JLabel ("The Koch Snowflake");
+        titleLabel = new JLabel ("Brancha");
         titleLabel.setForeground (Color.black);
 
         increase = new JButton (new ImageIcon ("increase.gif"));
@@ -66,11 +66,13 @@ public class TreeViewer implements ActionListener
         panel.add (drawing);
 
         frame = new JFrame();
-        frame.setTitle("Knoch Snowflake");
+        frame.setTitle("Brancha");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(WIDTH, HEIGHT);
         frame.add(panel);
         frame.setVisible(true);
+        
+        frame.repaint();
     }
 
     //-----------------------------------------------------------------
