@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.Scanner;
+import java.io.PrintWriter;
 /**
  * Write a description of class thingreadedr here.
  * 
@@ -37,6 +38,10 @@ public class reader
 
         Scanner in = new Scanner(System.in);
         in.useDelimiter("");
+        PrintWriter out = new PrintWriter("input.txt");
+        out.println("Hello");
+        out.printf("Total: %8.2f\n");
+        out.close();
         while (in.hasNext())
         {
             charcount ++;
