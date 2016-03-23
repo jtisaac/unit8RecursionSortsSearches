@@ -1,6 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 import java.io.PrintWriter;
+import java.io.FileNotFoundException;
 /**
  * Write a description of class thingreadedr here.
  * 
@@ -21,32 +22,27 @@ public class reader
         charcount = 0;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public static void main()
+
+    public static void main(String[] args)
     {
-        File inputFile = new File("input.txt");
-
-        Scanner in = new Scanner(System.in);
-        in.useDelimiter("");
-        PrintWriter out = new PrintWriter("input.txt");
-        out.println("Hello");
-        out.printf("Total: %8.2f\n");
-        out.close();
-        while (in.hasNext())
+        try
         {
-            charcount ++;
+            File inputFile = new File("words.txt");
 
+            Scanner in = new Scanner(inputFile);
+            in.useDelimiter("");
+
+            while (in.hasNext())
+            {
+                charcount ++;
+                in.next();
+            }
+            //System.out.println();
         }
-
+        catch(FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(charcount);
     }
 }
