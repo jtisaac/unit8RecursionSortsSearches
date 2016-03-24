@@ -12,6 +12,9 @@ public class reader
 {
     /** description of instance variable x (add comment for each instance variable) */
     private static int charcount;
+    private static int wordcount;
+    private static int linecount;
+    
 
     /**
      * Default constructor for objects of class thingreadedr
@@ -43,6 +46,42 @@ public class reader
         {
             System.out.println(e.getMessage());
         }
-        System.out.println(charcount);
+         try
+        {
+            File inputFile = new File("words.txt");
+
+            Scanner inz = new Scanner(inputFile);
+            inz.useDelimiter(" ");
+
+            while (inz.hasNext())
+            {
+                wordcount ++;
+                inz.next();
+            }
+            //System.out.println();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
+         try
+        {
+            File inputFile = new File("words.txt");
+
+            Scanner inq = new Scanner(inputFile);
+            inq.useDelimiter("\n");
+
+            while (inq.hasNext())
+            {
+                linecount ++;
+                inq.next();
+            }
+            //System.out.println();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("The # of characters is: " + charcount + "\n"  + "The # of words is: " + wordcount + "\n" + "The # of lines is: " + linecount );
     }
 }
